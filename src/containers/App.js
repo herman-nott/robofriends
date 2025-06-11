@@ -1,6 +1,7 @@
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
+import ErrorBoundry from '../components/ErrorBoundry';
 import { useState, useEffect } from "react";
 import './App.css';
 
@@ -30,7 +31,9 @@ function App() {
                 <h1 className='f1'>RoboFriends</h1>
                 <SearchBox searchChange={onSearchChange} />
                 <Scroll>
-                    <CardList robots={filteredRobots}/>
+                    <ErrorBoundry>
+                        <CardList robots={filteredRobots}/>
+                    </ErrorBoundry>
                 </Scroll>
             </div>
         );
